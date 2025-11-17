@@ -1,4 +1,3 @@
-from typing import Dict, List
 from core.generation import generation
 
 def refine_answer_remove_cot(raw_llm_output: str) -> str:

@@ -1,4 +1,3 @@
-import json
 import os
 import chromadb
 from chromadb.utils.embedding_functions.ollama_embedding_function import (

@@ -1,8 +1,6 @@
-from typing import List, Dict
-
 DOCUMENTS_DELIMITER = "\n+++++\n"
 
-def augmentation(user_question: str, relevant_chunks: dict) -> list[dict]:
+def augmentation(user_question: str, relevant_chunks: dict) -> list[dict[str,str]]:
     """
     relevant_chunks: Chroma query 的返回值
     """

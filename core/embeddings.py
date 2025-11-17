@@ -1,7 +1,6 @@
 import json
 import os
 import time
-from typing import List
 from dotenv import load_dotenv
 from ollama import Client
 
@@ -27,7 +26,7 @@ def gather_chunk_files(document_folders: list[str]) -> list[str]:
     return chunk_files
 
 
-def embeddings(documents_to_process:List[str]):
+def embeddings(documents_to_process:list[str]):
 
     chunk_files = gather_chunk_files(documents_to_process)
     for index, chunk_file in enumerate(chunk_files, start=1):
