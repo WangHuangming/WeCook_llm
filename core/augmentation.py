@@ -1,17 +1,24 @@
-DOCUMENTS_DELIMITER = "\n+++++\n"
+from datamodel.Ingredient import Ingredient
 
-def augmentation(user_question: str, relevant_chunks: dict) -> list[dict[str,str]]:
-    """
-    relevant_chunks: Chroma query 的返回值
-    """
+BLOCK_DELIMITER = "\n+++++++"
+CHUNK_DELIMITER = "\n-------"
+
+
+def augmentation(user_question: str, relevant_chunks: dict, ingredients: list[Ingredient]) -> list[dict[str,str]]:
     doc_texts = relevant_chunks['documents'][0]
 
-    user_prompt = "Reference Recipes:\n\n"
+    user_prompt = "Reference Recipes:"
 
     for doc_text in doc_texts:
-        user_prompt += f"{doc_text}\n"
-        user_prompt += DOCUMENTS_DELIMITER
+        user_prompt += f"\n{doc_text}"
+        user_prompt += CHUNK_DELIMITER
+    user_prompt += BLOCK_DELIMITER
 
+    user_prompt += "\nIngredients:"
+    for ingredient in ingredients:
+        user_prompt += f"\n{ingredient.name} {ingredient.weightInGrams}g"
+
+    user_prompt += BLOCK_DELIMITER
     user_prompt += f"\n### user's request: {user_question}"
 
     user_message = {"role": "user", "content": user_prompt}

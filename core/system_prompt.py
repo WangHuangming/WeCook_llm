@@ -30,5 +30,5 @@ SYSTEM_PROMPT = f"""
 
 system_message = {"role": "system", "content": SYSTEM_PROMPT}
 
-def get_system_message()->Dict[str, str]:
+def get_system_message()->dict[str, str]:
     return system_message
