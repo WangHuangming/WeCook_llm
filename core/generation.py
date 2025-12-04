@@ -8,7 +8,7 @@ ollama_client = Client(host=os.environ.get("OLLAMA_HOST", "http://localhost:1143
 
 
 def generation(prompt_messages: list[dict[str, str]]) -> str:
-    # Convert the messages to Ollama format
+    # convert the messages to Ollama format
     messages = [
         {"role": msg["role"], "content": msg["content"]} for msg in prompt_messages
     ]
