@@ -3,3 +3,4 @@ logs/
 raw_data/
 chunks/
 chroma_db/
+.env
